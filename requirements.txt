@@ -3,4 +3,5 @@ djangorestframework
 psycopg2-binary
 drf-spectacular
 gunicorn
+django-jazzmin
 
