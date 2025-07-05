@@ -10,5 +10,5 @@ class Vacancy(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.title} ({self.project.name})"
+        return f"{self.title} ({self.project.title})"
 

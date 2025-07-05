@@ -26,9 +26,27 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'drf_spectacular',
     'projects',
     'vacancy',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Trood API',
+    'DESCRIPTION': 'REST API for managing projects and vacancies',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,7 +90,6 @@ DATABASES = {
 
 
 # Password validation
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -148,7 +165,7 @@ JAZZMIN_SETTINGS = {
 }
 
 JAZZMIN_UI_TWEAKS = {
-    "theme": "cyborg",  # или 'darkly', 'lux', 'superhero' — можешь менять
+    "theme": "cyborg",
     "sidebar": "sidebar-dark-primary",
     "accent": "accent-teal",
     "navbar": "navbar-dark navbar-primary",
