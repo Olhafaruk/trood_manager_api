@@ -1,4 +1,4 @@
-#backend/config/settings.py
+#backend/config/base.py
 
 from pathlib import Path
 import os
@@ -7,12 +7,9 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
-
-DEBUG = True
-
-ALLOWED_HOSTS = []
+#SECRET_KEY = os.environ.get('SECRET_KEY')
+#DEBUG = True
+#ALLOWED_HOSTS = []
 
 
 
@@ -118,12 +115,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+#STATICFILES_DIRS = [
+#    BASE_DIR / "static",
+#]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 

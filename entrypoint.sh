@@ -5,8 +5,16 @@
 
 # Apply database migrations
 echo "Running migrations..."
-python manage.py migrate --noinput
+python backend/manage.py migrate --noinput
+
+echo "Collecting static files..."
+python backend/manage.py collectstatic --noinput
 
 # Start the Gunicorn server
-echo "Starting Gunicorn..."
-exec gunicorn backend.config.wsgi:application --bind 0.0.0.0:8000
+if [ "$ENV" = "prod" ]; then
+    echo "Starting Gunicorn..."
+    exec gunicorn config.wsgi:application --bind 0.0.0.0:8000
+else
+    echo "Starting development server..."
+    exec python backend/manage.py runserver 0.0.0.0:8000
+fi
