@@ -13,7 +13,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #ALLOWED_HOSTS = []
 
 
-
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
@@ -28,7 +27,9 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'projects',
     'vacancy',
+    'auth_custom',
 ]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
