@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'drf_spectacular',
+    'drf_spectacular_sidecar',
     'projects',
     'vacancy',
     'auth_custom',
@@ -42,6 +43,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ],
 
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Trood Manager API',
+    'DESCRIPTION': 'Project and vacancy management system',
+    'VERSION': '1.0.0',
 }
 
 SPECTACULAR_SETTINGS = {

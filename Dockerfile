@@ -18,5 +18,7 @@ COPY wait-for-db.sh .
 COPY entrypoint.sh .
 
 RUN chmod +x wait-for-db.sh entrypoint.sh
+RUN python backend/manage.py migrate
+RUN python backend/manage.py collectstatic --noinput
 CMD ["./entrypoint.sh"]
 
