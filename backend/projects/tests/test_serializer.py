@@ -1,11 +1,11 @@
-# backend/projects/tests.py
+# backend/projects/tests/test_serializer.py
 
 from datetime import date, timedelta
 from django.test import TestCase
 from projects.serializers import ProjectSerializer
 
 
-class ProjectSerializerTest(TestCase):
+class TestProjectSerializer(TestCase):
     def test_valid_data(self):
         data = {
             "title": "Website Redesign",

@@ -1,4 +1,4 @@
-# backend/vacancy/tests.py
+# backend/vacancy/tests/test_serializer.py
 
 from datetime import date, timedelta
 from django.test import TestCase
@@ -6,7 +6,7 @@ from projects.models import Project
 from vacancy.serializers import VacancySerializer
 
 
-class VacancySerializerTest(TestCase):
+class TestVacancySerializer(TestCase):
     def setUp(self):
         self.project = Project.objects.create(
         title="Alpha",
