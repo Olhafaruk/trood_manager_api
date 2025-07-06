@@ -2,13 +2,17 @@
 
 from datetime import date, timedelta
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 from rest_framework import status
-from rest_framework.test import APITestCase
+from rest_framework.test import APIClient, APITestCase
 from projects.models import Project
 from vacancy.models import Vacancy
 
 class TestProjectAPI(APITestCase):
     def setUp(self):
+        self.user = get_user_model().objects.create_user(username="olha", password="1234")
+        self.client = APIClient()
+        self.client.force_authenticate(user=self.user)
         self.list_url = reverse('project-list')
         self.payload = {
             "title": "API Project",
@@ -57,6 +61,10 @@ class TestProjectAPI(APITestCase):
 
 class TestProjectVacanciesNestedAPI(APITestCase):
     def setUp(self):
+        self.user = get_user_model().objects.create_user(username="nested_user", password="1234")
+        self.client = APIClient()
+        self.client.force_authenticate(user=self.user)
+
         self.project = Project.objects.create(
             title="Nested", deadline=date.today() + timedelta(days=30)
         )

@@ -1,6 +1,7 @@
 #backend/projects/views.py
 
 from rest_framework import status, viewsets
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from vacancy.models import Vacancy
@@ -10,8 +11,9 @@ from .serializers import ProjectSerializer
 from vacancy.serializers import VacancySerializer
 
 class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.all()
+    queryset = Project.objects.all().order_by("-created_at")
     serializer_class = ProjectSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     @action(detail=True, methods=["get", "post"])
     def vacancies(self, request, pk=None):
