@@ -21,5 +21,6 @@ RUN chmod +x wait-for-db.sh entrypoint.sh
 
 COPY . .
 
-CMD ["./entrypoint.sh"]
+CMD ["sh", "/app/entrypoint.sh"]
+
 
