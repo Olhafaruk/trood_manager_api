@@ -10,6 +10,12 @@ python backend/manage.py migrate --noinput
 echo "Collecting static files..."
 python backend/manage.py collectstatic --noinput
 
+echo " Create a superuser..."
+echo "from django.contrib.auth import get_user_model; User = get_user_model();
+User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin',
+'admin@example.com', 'Admin12345')" | python backend/manage.py shell
+
+
 # Start the Gunicorn server
 if [ "$ENV" = "prod" ]; then
     echo "Starting Gunicorn..."
