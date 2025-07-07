@@ -4,6 +4,8 @@ gunicorn
 psycopg2-binary
 dj-database-url
 drf-spectacular>=0.28.0
+drf-spectacular-sidecar
+
 django-environ
 django-jazzmin
 python-decouple
