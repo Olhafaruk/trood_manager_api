@@ -1,4 +1,4 @@
-# 🧠 Trood Manager API
+````# 🧠 Trood Manager API
 
 A scalable Django REST Framework backend for managing **projects** and **vacancies**, featuring token authentication, a sleek Jazzmin admin, auto-generated Swagger docs, and Dockerized deployment.
 
@@ -16,7 +16,6 @@ Built with clarity and structure for production use.
 | Projects API  | [trood-api.onrender.com/api/projects](https://trood-api.onrender.com/api/projects/) |
 | Vacancies API | [trood-api.onrender.com/api/vacancies](https://trood-api.onrender.com/api/vacancies/) |
 
----
 
 ## 🧱 Stack & Architecture
 
@@ -152,6 +151,70 @@ waitress-serve --listen=0.0.0.0:8000 config.wsgi:application
 4. Add same `.env` variables into Render dashboard
 
 ---
+## 📎 Useful Info
+
+🧪 Admin Credentials
+Use these demo credentials to test the admin dashboard:
+Username: admin
+Password: Admin12345
+⚠️ For demo purposes only. Do not use these credentials in production.
+
+
+---
+
+## 🔐 Authentication Guide
+
+To test secured endpoints, follow these steps:
+
+### 1️⃣ Register a user  
+Send a `POST` request to `/auth/register/` with the following body:
+
+```json
+{
+  "username": "demo_user",
+  "email": "demo@example.com",
+  "password": "DemoPass123"
+}
+```
+
+📍 [Try it](https://trood-api.onrender.com/auth/register/)
+
+---
+
+### 2️⃣ Get access token  
+Send a `POST` request to `/auth/token/` with:
+
+```json
+{
+  "username": "demo_user",
+  "password": "DemoPass123"
+}
+```
+
+You’ll receive:
+
+```json
+{
+  "token": "abc123..."
+}
+```
+
+📍 [Try it](https://trood-api.onrender.com/auth/token/)
+
+---
+
+### 3️⃣ Access user profile  
+Use the token from step 2 in the header:
+
+```
+Authorization: Token abc123...
+```
+
+Then call `GET /auth/profile/` to fetch current user info.
+
+📍 [Try it](https://trood-api.onrender.com/auth/profile/)
+
+---
 
 ## 👩‍💻 Author
 
@@ -161,5 +224,5 @@ Built and maintained by [Olhafaruk](https://github.com/Olhafaruk/trood_manager_a
 
 
 
-
+````
 

@@ -10,6 +10,9 @@ from .models import Project
 from .serializers import ProjectSerializer
 from vacancy.serializers import VacancySerializer
 
+from drf_spectacular.utils import extend_schema
+
+@extend_schema(tags=["Projects"])
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all().order_by("-created_at")
     serializer_class = ProjectSerializer
@@ -32,6 +35,26 @@ class ProjectViewSet(viewsets.ModelViewSet):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @extend_schema(summary="List all projects", tags=["Projects"])
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
+    @extend_schema(summary="Create a project", tags=["Projects"])
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+
+    @extend_schema(summary="Retrieve project by ID", tags=["Projects"])
+    def retrieve(self, request, *args, **kwargs):
+        return super().retrieve(request, *args, **kwargs)
+
+    @extend_schema(summary="Update project", tags=["Projects"])
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
+
+    @extend_schema(summary="Delete project", tags=["Projects"])
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
 
 
 
