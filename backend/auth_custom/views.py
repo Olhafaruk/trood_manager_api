@@ -21,6 +21,7 @@ class RegisterView(generics.CreateAPIView):
     tags=["Auth"]
 )
 class ProfileView(APIView):
+    serializer_class = ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
@@ -39,6 +40,7 @@ class ProfileView(APIView):
     tags=["Auth"]
 )
 class ChangePasswordView(APIView):
+    serializer_class = PasswordChangeSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
